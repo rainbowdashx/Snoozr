@@ -53,7 +53,7 @@
         android:layout_marginRight="24dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+        app:srcCompat="@drawable/ic_baseline_alarm_add_24px" />
 
 
 </RelativeLayout>
