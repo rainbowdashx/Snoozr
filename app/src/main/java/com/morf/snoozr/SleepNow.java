@@ -1,7 +1,9 @@
 package com.morf.snoozr;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.AlarmClock;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,7 +38,7 @@ public class SleepNow extends AppCompatActivity {
 
         Intent In = getIntent();
 
-        Long StartTimeMs = In.getLongExtra("StartTime",0);
+        Long StartTimeMs = In.getLongExtra("StartTime", 0);
 
 
         //CALCULATE TIMES
@@ -57,16 +59,43 @@ public class SleepNow extends AppCompatActivity {
 
         mAdapter = new ListAdapter(DataSet, new OnItemClickListener() {
             @Override
-            public void onItemClick(ContentItem item) {
+            public void onItemClick(final ContentItem item) {
 
-                Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-                i.putExtra(AlarmClock.EXTRA_MESSAGE, item.Text);
-                i.putExtra(AlarmClock.EXTRA_HOUR, item.DateTime.get(Calendar.HOUR_OF_DAY));
-                i.putExtra(AlarmClock.EXTRA_MINUTES, item.DateTime.get(Calendar.MINUTE));
-                i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
-                startActivity(i);
+                AlertDialog.Builder adb = new AlertDialog.Builder(SleepNow.this,R.style.SnoozrAlertDialogStyle);
 
-                finish();
+
+
+                adb.setTitle("Set Alarm for: " + item.Text);
+
+
+                adb.setIcon(R.drawable.ic_baseline_alarm_add_24px);
+
+
+                adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+                        i.putExtra(AlarmClock.EXTRA_MESSAGE, item.Text);
+                        i.putExtra(AlarmClock.EXTRA_HOUR, item.DateTime.get(Calendar.HOUR_OF_DAY));
+                        i.putExtra(AlarmClock.EXTRA_MINUTES, item.DateTime.get(Calendar.MINUTE));
+                        i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+                        startActivity(i);
+
+                        finish();
+
+                    }
+                });
+
+
+                adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                adb.show();
+
+
+                // finish();
 
             }
         });
