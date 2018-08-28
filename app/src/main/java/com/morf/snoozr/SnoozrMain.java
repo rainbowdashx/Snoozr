@@ -2,6 +2,7 @@ package com.morf.snoozr;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.AlarmClock;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TimePicker;
 
 import java.util.Calendar;
 
@@ -60,22 +62,43 @@ public class SnoozrMain extends AppCompatActivity {
 
     public void SetAlarm(View view) {
 
-        /*Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-        i.putExtra(AlarmClock.EXTRA_MESSAGE, "New Alarm");
-        i.putExtra(AlarmClock.EXTRA_HOUR, 03);
-        i.putExtra(AlarmClock.EXTRA_MINUTES, 58);
-        i.putExtra(AlarmClock.EXTRA_SKIP_UI,true);*/
+        Calendar currentTime = Calendar.getInstance();
 
-
-        Intent i = new Intent(this,SleepNow.class);
+        Intent i = new Intent(this, SleepNow.class);
+        i.putExtra("StartTime", currentTime.getTimeInMillis());
         startActivity(i);
 
     }
 
-    public void DeleteAlarm(View view) {
 
-        Intent i = new Intent(AlarmClock.ACTION_DISMISS_ALARM);
+    public void SelectWakeUp(View view) {
+
+        final Calendar c = Calendar.getInstance();
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+
+        // Launch Time Picker Dialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        WakeupTimeSelected(hourOfDay,minute);
+                    }
+                }, mHour, mMinute, true);
+
+        timePickerDialog.show();
+
+
+    }
+
+    public void WakeupTimeSelected(int hourOfDay, int minute){
+        Calendar currentTime = Calendar.getInstance();
+        currentTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
+        currentTime.set(Calendar.MINUTE,minute);
+
+        Intent i = new Intent(this, SleepNow.class);
+        i.putExtra("StartTime", currentTime.getTimeInMillis());
         startActivity(i);
-
     }
 }

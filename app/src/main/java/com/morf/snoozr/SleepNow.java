@@ -34,9 +34,14 @@ public class SleepNow extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        Intent In = getIntent();
+
+        Long StartTimeMs = In.getLongExtra("StartTime",0);
+
 
         //CALCULATE TIMES
         Calendar currentTime = Calendar.getInstance();
+        currentTime.setTimeInMillis(StartTimeMs);
         currentTime.add(Calendar.MINUTE, 15);
 
 
