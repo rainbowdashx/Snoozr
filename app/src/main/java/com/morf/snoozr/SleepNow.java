@@ -62,14 +62,8 @@ public class SleepNow extends AppCompatActivity {
             public void onItemClick(final ContentItem item) {
 
                 AlertDialog.Builder adb = new AlertDialog.Builder(SleepNow.this,R.style.SnoozrAlertDialogStyle);
-
-
-
                 adb.setTitle("Set Alarm for: " + item.Text);
-
-
                 adb.setIcon(R.drawable.ic_baseline_alarm_add_24px);
-
 
                 adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -93,10 +87,6 @@ public class SleepNow extends AppCompatActivity {
                 });
 
                 adb.show();
-
-
-                // finish();
-
             }
         });
 
