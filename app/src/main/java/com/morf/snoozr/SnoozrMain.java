@@ -1,11 +1,9 @@
 package com.morf.snoozr;
 
-import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.AlarmClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -77,22 +75,52 @@ public class SnoozrMain extends AppCompatActivity {
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
 
+
         // Launch Time Picker Dialog
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                 new TimePickerDialog.OnTimeSetListener() {
 
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        WakeupTimeSelected(hourOfDay,minute);
+                        WakeUpTimeSelected(hourOfDay,minute);
                     }
                 }, mHour, mMinute, true);
 
         timePickerDialog.show();
 
-
     }
 
-    public void WakeupTimeSelected(int hourOfDay, int minute){
+    public void WakeUpTimeSelected(int hourOfDay, int minute){
+        Calendar currentTime = Calendar.getInstance();
+        currentTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
+        currentTime.set(Calendar.MINUTE,minute);
+
+        Intent i = new Intent(this, BedTimes.class);
+        i.putExtra("StartTime", currentTime.getTimeInMillis());
+        startActivity(i);
+    }
+
+
+    public void SelectBedTime(View view) {
+
+        final Calendar c = Calendar.getInstance();
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+
+        // Launch Time Picker Dialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        BedTimeSelected(hourOfDay,minute);
+                    }
+                }, mHour, mMinute, true);
+
+        timePickerDialog.show();
+    }
+
+    public void BedTimeSelected(int hourOfDay, int minute){
         Calendar currentTime = Calendar.getInstance();
         currentTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
         currentTime.set(Calendar.MINUTE,minute);

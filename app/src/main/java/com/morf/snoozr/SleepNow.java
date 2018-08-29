@@ -41,6 +41,7 @@ public class SleepNow extends AppCompatActivity {
         Long StartTimeMs = In.getLongExtra("StartTime", 0);
 
 
+
         //CALCULATE TIMES
         Calendar currentTime = Calendar.getInstance();
         currentTime.setTimeInMillis(StartTimeMs);
@@ -53,6 +54,7 @@ public class SleepNow extends AppCompatActivity {
             Calendar tmp = (Calendar) currentTime.clone();
             tmp.add(Calendar.MINUTE, i * 90);
             ContentItem newItem = new ContentItem(tmp, currentTime);
+            
             DataSet.add(newItem);
         }
 
@@ -61,7 +63,7 @@ public class SleepNow extends AppCompatActivity {
             @Override
             public void onItemClick(final ContentItem item) {
 
-                AlertDialog.Builder adb = new AlertDialog.Builder(SleepNow.this,R.style.SnoozrAlertDialogStyle);
+                AlertDialog.Builder adb = new AlertDialog.Builder(SleepNow.this, R.style.SnoozrAlertDialogStyle);
                 adb.setTitle("Set Alarm for: " + item.Text);
                 adb.setIcon(R.drawable.ic_baseline_alarm_add_24px);
 
