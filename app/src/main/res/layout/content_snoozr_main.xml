@@ -39,4 +39,14 @@
         android:text="I Wanna wake up at"
         android:textColor="@android:color/darker_gray"
         android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnPowerNap"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="PowerNap"
+        android:text="Power Nap"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="24sp" />
 </LinearLayout>

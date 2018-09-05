@@ -14,9 +14,9 @@ public class ContentItem {
     public ContentItem(Calendar InCalender,Calendar StartTime){
 
         long millis = InCalender.getTime().getTime() - StartTime.getTime().getTime();
-        int hours = (int) millis/(1000 * 60 * 60);
-        int mins = (int)(millis/(1000*60)) % 60;
-        int cycles = (int) (millis / (90 * 1000)) / 60;
+        int hours = Math.abs( (int)  millis/(1000 * 60 * 60));
+        int mins = Math.abs( (int)(millis/(1000*60)) % 60);
+        int cycles = Math.abs((int) (millis / (90 * 1000)) / 60);
 
         Text = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(InCalender.getTime());
         Duration = "Nap for " + hours + "h : " + mins + "m";

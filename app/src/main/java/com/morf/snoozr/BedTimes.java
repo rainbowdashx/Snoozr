@@ -48,16 +48,22 @@ public class BedTimes extends AppCompatActivity {
 
         //CALCULATE TIMES
         mCurrentTime = Calendar.getInstance();
+        Calendar ActualTime = (Calendar) mCurrentTime.clone();
         mCurrentTime.setTimeInMillis(StartTimeMs);
+        mCurrentTime.add(Calendar.MINUTE, -15);
+
 
         List<ContentItem> DataSet = new LinkedList<>();
 
         for (int i = 1; i < 10; i++) {
             Calendar tmp = (Calendar) mCurrentTime.clone();
-            tmp.add(Calendar.MINUTE, i * 90);
+            tmp.add(Calendar.MINUTE, i * -90);
+
+
             ContentItem newItem = new ContentItem(tmp, mCurrentTime);
 
             DataSet.add(0, newItem);
+
         }
         mAdapter = new ListAdapter(DataSet, null, true);
 

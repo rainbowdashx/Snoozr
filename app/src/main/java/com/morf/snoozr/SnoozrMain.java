@@ -129,4 +129,11 @@ public class SnoozrMain extends AppCompatActivity {
         i.putExtra("StartTime", currentTime.getTimeInMillis());
         startActivity(i);
     }
+
+    public void PowerNap(View view) {
+
+        Intent i = new Intent(this, PowerNap.class);
+
+        startActivity(i);
+    }
 }

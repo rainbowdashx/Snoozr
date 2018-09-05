@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SleepNow" />
-        <activity android:name=".BedTimes"></activity>
+        <activity android:name=".BedTimes" />
+        <activity android:name=".PowerNap"></activity>
     </application>
 
 </manifest>
