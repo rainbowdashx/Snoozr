@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="You should try to fall asleep at one of the following times:"
-            android:textColor="@android:color/holo_orange_dark"
+            android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
         <android.support.v7.widget.RecyclerView

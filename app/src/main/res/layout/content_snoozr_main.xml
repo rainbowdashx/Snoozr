@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:onClick="SetAlarm"
         android:text="Sleep Now - ZZZ"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp" />
     <Button
         android:id="@+id/btnKnowBedTime"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:onClick="SelectBedTime"
         android:text="I Know my Bedtime"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp" />
     <Button
         android:id="@+id/btnSelectWakeupTime"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:onClick="SelectWakeUp"
         android:text="I Wanna wake up at"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 
     <Button
@@ -47,6 +47,6 @@
         android:layout_height="wrap_content"
         android:onClick="PowerNap"
         android:text="Power Nap"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 </LinearLayout>
