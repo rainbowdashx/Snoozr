@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.shawnlin.numberpicker.NumberPicker;
+
 import java.util.Calendar;
 
 public class PowerNap extends AppCompatActivity {
@@ -27,14 +29,30 @@ public class PowerNap extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
+       // StopMediaPlayer();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
         StopMediaPlayer();
+
     }
 
     public void NapWakemeUp(View view) {
 
         Calendar currentTime = Calendar.getInstance();
         Calendar napTime = (Calendar) currentTime.clone();
-        napTime.add(Calendar.MINUTE, 20);
+
+        NumberPicker MinutePicker =  findViewById(R.id.MinutePicker);
+        NumberPicker HourPicker =  findViewById(R.id.HourPicker);
+
+        int Minutes =  MinutePicker.getValue();
+        int Hours = HourPicker.getValue();
+
+        napTime.add(Calendar.MINUTE, Minutes);
+        napTime.add(Calendar.HOUR,Hours);
 
         final ContentItem item = new ContentItem(napTime, currentTime);
 

@@ -44,7 +44,11 @@ public class SleepNow extends AppCompatActivity {
 
         //CALCULATE TIMES
         Calendar currentTime = Calendar.getInstance();
+        //Set time to intent passed value
         currentTime.setTimeInMillis(StartTimeMs);
+
+        //keep Actual time for displaying extra 15 minutes of sleep
+        Calendar ActualTime =(Calendar) currentTime.clone();
         currentTime.add(Calendar.MINUTE, 15);
 
 
@@ -53,7 +57,7 @@ public class SleepNow extends AppCompatActivity {
         for (int i = 1; i < 10; i++) {
             Calendar tmp = (Calendar) currentTime.clone();
             tmp.add(Calendar.MINUTE, i * 90);
-            ContentItem newItem = new ContentItem(tmp, currentTime);
+            ContentItem newItem = new ContentItem(tmp, ActualTime);
             
             DataSet.add(newItem);
         }

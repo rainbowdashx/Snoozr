@@ -48,8 +48,11 @@ public class BedTimes extends AppCompatActivity {
 
         //CALCULATE TIMES
         mCurrentTime = Calendar.getInstance();
-        Calendar ActualTime = (Calendar) mCurrentTime.clone();
+        //Set time to intent passed value
         mCurrentTime.setTimeInMillis(StartTimeMs);
+
+        //keep Actual time for displaying extra 15 minutes of sleep
+        Calendar ActualTime = (Calendar) mCurrentTime.clone();
         mCurrentTime.add(Calendar.MINUTE, -15);
 
 
@@ -60,7 +63,7 @@ public class BedTimes extends AppCompatActivity {
             tmp.add(Calendar.MINUTE, i * -90);
 
 
-            ContentItem newItem = new ContentItem(tmp, mCurrentTime);
+            ContentItem newItem = new ContentItem(tmp, ActualTime);
 
             DataSet.add(0, newItem);
 
