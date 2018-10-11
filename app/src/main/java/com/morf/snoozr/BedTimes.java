@@ -58,7 +58,7 @@ public class BedTimes extends AppCompatActivity {
 
         List<ContentItem> DataSet = new LinkedList<>();
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 6; i++) {
             Calendar tmp = (Calendar) mCurrentTime.clone();
             tmp.add(Calendar.MINUTE, i * -90);
 
