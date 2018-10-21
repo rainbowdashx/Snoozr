@@ -57,7 +57,7 @@ public class SleepNow extends AppCompatActivity {
         for (int i = 1; i < 10; i++) {
             Calendar tmp = (Calendar) currentTime.clone();
             tmp.add(Calendar.MINUTE, i * 90);
-            ContentItem newItem = new ContentItem(tmp, ActualTime);
+            ContentItem newItem = new ContentItem(tmp, ActualTime,getApplicationContext());
             
             DataSet.add(newItem);
         }
@@ -68,10 +68,10 @@ public class SleepNow extends AppCompatActivity {
             public void onItemClick(final ContentItem item) {
 
                 AlertDialog.Builder adb = new AlertDialog.Builder(SleepNow.this, R.style.SnoozrAlertDialogStyle);
-                adb.setTitle("Set Alarm for: " + item.Text);
+                adb.setTitle(getString(R.string.set_alarm_for) + item.Text);
                 adb.setIcon(R.drawable.ic_baseline_alarm_add_24px);
 
-                adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                adb.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
                         i.putExtra(AlarmClock.EXTRA_MESSAGE, item.Text);
@@ -86,7 +86,7 @@ public class SleepNow extends AppCompatActivity {
                 });
 
 
-                adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                adb.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }

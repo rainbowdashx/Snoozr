@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/background_image_moon"
     android:orientation="vertical"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="SetAlarm"
-        android:text="Sleep Now - ZZZ"
+        android:text="@string/sleep_now"
         android:textColor="@color/colorAccent"
         android:textSize="24sp" />
     <Button
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="SelectBedTime"
-        android:text="I Know my Bedtime"
+        android:text="@string/i_know_my_bedtime"
         android:textColor="@color/colorAccent"
         android:textSize="24sp" />
     <Button
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="SelectWakeUp"
-        android:text="I Wanna wake up at"
+        android:text="@string/i_wanna_wake_up_at"
         android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="PowerNap"
-        android:text="Power Nap"
+        android:text="@string/power_nap"
         android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 </LinearLayout>

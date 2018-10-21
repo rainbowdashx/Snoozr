@@ -63,7 +63,7 @@ public class BedTimes extends AppCompatActivity {
             tmp.add(Calendar.MINUTE, i * -90);
 
 
-            ContentItem newItem = new ContentItem(tmp, ActualTime);
+            ContentItem newItem = new ContentItem(tmp, ActualTime,getApplicationContext());
 
             DataSet.add(0, newItem);
 
@@ -75,7 +75,7 @@ public class BedTimes extends AppCompatActivity {
 
         Button btnWakeup = findViewById(R.id.btnSetAlarmWakeUp);
         mDateText = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(mCurrentTime.getTime());
-        String ButtonText = "Set Alarm at: " + mDateText;
+        String ButtonText = getString(R.string.set_alarm_at) + mDateText;
         btnWakeup.setText(ButtonText);
 
     }
@@ -83,10 +83,10 @@ public class BedTimes extends AppCompatActivity {
     public void SetAlarmWakeup(View view) {
 
         AlertDialog.Builder adb = new AlertDialog.Builder(this, R.style.SnoozrAlertDialogStyle);
-        adb.setTitle("Set Alarm for: " + mDateText);
+        adb.setTitle(getString(R.string.set_alarm_for)+ mDateText);
         adb.setIcon(R.drawable.ic_baseline_alarm_add_24px);
 
-        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        adb.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
                 i.putExtra(AlarmClock.EXTRA_MESSAGE, mDateText);
@@ -101,7 +101,7 @@ public class BedTimes extends AppCompatActivity {
         });
 
 
-        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        adb.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
             }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/background_image_moon"
     tools:context=".BedTimes">
 
 
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:onClick="SetAlarmWakeup"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:text="Set Alarm"
+            android:text="@string/set_alarm"
              />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="You should try to fall asleep at one of the following times:"
+            android:text="@string/you_should_try_to_fall_asleep"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 

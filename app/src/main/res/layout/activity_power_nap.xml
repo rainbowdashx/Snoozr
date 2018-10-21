@@ -58,7 +58,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="84dp"
         android:onClick="NapWakemeUp"
-        android:text="Start Nap"
+        android:text="@string/start_nap"
         tools:layout_editor_absoluteX="64dp"
         tools:layout_editor_absoluteY="286dp" />
 
@@ -70,7 +70,7 @@
         android:layout_alignStart="@+id/HourPicker"
         android:layout_marginTop="33dp"
         android:onClick="PlayPinkNoise"
-        android:text="PinkNoise" />
+        android:text="@string/pinknoise" />
 
     <Button
         android:id="@+id/btnStopPinkNoise"
@@ -80,7 +80,7 @@
         android:layout_alignTop="@+id/btnPinkNoise"
         android:layout_marginEnd="38dp"
         android:onClick="StopPinkNoise"
-        android:text="Stop PinkNoise" />
+        android:text="@string/stop_pinknoise" />
 
     <TextView
         android:id="@+id/txtHours"
@@ -89,7 +89,7 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/HourPicker"
         android:textColor="@color/colorPrimary"
-        android:text="Hours" />
+        android:text="@string/hours" />
 
     <TextView
         android:id="@+id/txtMinutes"
@@ -99,6 +99,6 @@
         android:layout_marginStart="-79dp"
         android:layout_toEndOf="@+id/MinutePicker"
         android:textColor="@color/colorPrimary"
-        android:text="Minutes" />
+        android:text="@string/minutes" />
 
 </RelativeLayout>
