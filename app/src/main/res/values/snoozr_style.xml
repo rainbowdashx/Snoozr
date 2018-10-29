@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SnoozrAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="SnoozrAlertDialogStyle" parent="@style/AppTheme">
         <!-- Used for the buttons -->
-        <item name="colorAccent">#FFC107</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <!-- Used for the title and text -->
-        <item name="android:textColorPrimary">#ffffffff</item>
+        <item name="android:textColorPrimary">@color/primary_light</item>
         <!-- Used for the background -->
-        <item name="android:background">#212121</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

@@ -34,14 +34,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:text="Nap for 1h44m"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/primary_light" />
 
         <TextView
             android:id="@+id/txtCycleCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1 Cycles"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/primary_light" />
 
     </LinearLayout>
 

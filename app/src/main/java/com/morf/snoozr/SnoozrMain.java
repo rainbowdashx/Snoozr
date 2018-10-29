@@ -77,7 +77,7 @@ public class SnoozrMain extends AppCompatActivity {
 
 
         // Launch Time Picker Dialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,R.style.SnoozrTimepickerDialogStyle,
                 new TimePickerDialog.OnTimeSetListener() {
 
                     @Override
@@ -108,7 +108,7 @@ public class SnoozrMain extends AppCompatActivity {
         int mMinute = c.get(Calendar.MINUTE);
 
         // Launch Time Picker Dialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,R.style.SnoozrTimepickerDialogStyle,
                 new TimePickerDialog.OnTimeSetListener() {
 
                     @Override
