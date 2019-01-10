@@ -4,7 +4,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
 
-    <color name="colorAccent">#FF5722</color>
+    <color name="colorAccent">#ffd622</color>
     <color name="colorWhite">#C5CAE9</color>
 
     <color name="primary_light">#C5CAE9</color>
@@ -13,6 +13,7 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 
+    <color name="colorBlackBackground">#131313</color>
 </resources>
 
 

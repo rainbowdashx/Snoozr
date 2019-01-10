@@ -9,18 +9,23 @@
     <!-- https://i.imgur.com/Mx4PRQs.png -->
 
 
-        <style name="SnoozrTimepickerDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-
-            <item name="colorAccent">@color/colorAccent</item>
-            <item name="android:background">@color/colorPrimaryDark</item>
+        <style name="SnoozrTimepickerDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert">
 
 
-            <item name="android:textColorPrimary">@color/primary_light</item>
-            <item name="android:textColorSecondary">@color/secondary_text</item>
+            <item name="colorAccent">@color/colorAccent</item>a
+            <item name="android:background">@color/colorBlackBackground</item>
 
+            <item name="android:timePickerStyle">@style/SnoozrTimePickerDialogTheme</item>
+            <!--
+            <item name="android:headerBackground">#ffe082</item>
+            <item name="android:numbersTextColor">#b71c1c</item>
+            <item name="android:numbersInnerTextColor">#f44336</item>
+            <item name="android:numbersSelectorColor">#33691e</item>
+            <item name="android:numbersBackgroundColor">#ef9a9a</item>
+            <item name="android:amPmTextColor">#9c27b0</item>-->
 
+            <item name="android:textColorPrimary">@color/colorAccent</item>
 
-            <item name="android:colorBackground">#443400</item>
 <!--
             <item name="android:numbersTextColor">#ffffff</item>
             <item name="android:numbersSelectorColor">#88000000</item>
@@ -29,6 +34,38 @@
 
         </style>
 
+    <style name="SnoozrTimePickerDialogTheme" parent="@android:style/Widget.Material.Light.TimePicker">
 
+        <!--
+        <item name="android:timePickerMode">clock</item>-->
+        <item name="android:headerBackground">@color/colorBlackBackground</item>
+
+
+
+
+
+        <item name="android:headerTimeTextAppearance">@style/TextAppearance.TimePickerDialogStyle.TimeLabel</item>
+
+
+        <item name="android:numbersInnerTextColor">#afaf03</item>
+        <item name="android:numbersTextColor">@color/colorAccent</item>
+        <item name="android:numbersSelectorColor">@color/colorBlackBackground</item>
+        <item name="android:numbersBackgroundColor">@color/colorPrimaryDark</item>
+
+
+
+
+
+
+
+    </style>
+
+    <style name="TextAppearance.TimePickerDialogStyle.TimeLabel" parent="@android:style/TextAppearance.Material">
+
+        <item name="android:textSize">60sp</item> <!-- from -->
+        <item name="android:textColor">@color/colorAccent</item>
+
+
+    </style>
 
 </resources>

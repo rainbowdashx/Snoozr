@@ -74,7 +74,7 @@ public class BedTimes extends AppCompatActivity {
 
 
         Button btnWakeup = findViewById(R.id.btnSetAlarmWakeUp);
-        mDateText = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(mCurrentTime.getTime());
+        mDateText = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(ActualTime.getTime());
         String ButtonText = getString(R.string.set_alarm_at) + mDateText;
         btnWakeup.setText(ButtonText);
 

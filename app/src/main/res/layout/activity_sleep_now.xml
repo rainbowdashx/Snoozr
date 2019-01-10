@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background_image_moon"
+    android:background="@drawable/gradient_background"
     tools:context=".SleepNow">
 
     <android.support.v7.widget.RecyclerView

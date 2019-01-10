@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SnoozrAlertDialogStyle" parent="@style/AppTheme">
+    <style name="SnoozrAlertDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <!-- Used for the buttons -->
         <item name="colorAccent">@color/colorAccent</item>
         <!-- Used for the title and text -->
