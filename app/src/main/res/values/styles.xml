@@ -6,8 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor">@android:color/white</item>
+        <item name="android:navigationBarColor">@color/colorBlackBackground</item>
         <item name="android:colorForeground">@android:color/white</item>
+        <item name="android:colorBackground">@color/colorBlackBackground</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
 
 
     </style>

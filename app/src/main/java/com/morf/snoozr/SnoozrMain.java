@@ -3,17 +3,35 @@ package com.morf.snoozr;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
+
+import android.support.animation.DynamicAnimation;
+import android.support.animation.FlingAnimation;
+
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.ArcMotion;
+import android.transition.ChangeBounds;
+import android.transition.Transition;
+import android.transition.TransitionManager;
+import android.transition.TransitionValues;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.widget.ImageView;
 import android.widget.TimePicker;
 
+import com.plattysoft.leonids.ParticleSystem;
+
 import java.util.Calendar;
+
+
 
 public class SnoozrMain extends AppCompatActivity {
 
@@ -28,10 +46,45 @@ public class SnoozrMain extends AppCompatActivity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
+
+
+
+
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+/*
+                FlingAnimation anim = new FlingAnimation( findViewById(R.id.imgSheep), DynamicAnimation.TRANSLATION_X)
+                    .setStartVelocity(200);
+                anim.start();*/
+
+            /*    ImageView imageView = (ImageView) findViewById(R.id.imgSheep);
+                imageView.setVisibility(View.VISIBLE);
+
+                imageView.animate().translationY(-500)
+                        .setInterpolator(new AccelerateInterpolator())
+                        .setDuration(1500)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+
+
+                                ImageView imageView = (ImageView) findViewById(R.id.imgSheep);
+
+                                                        imageView.animate().translationY(0)
+                                        .setInterpolator(new AccelerateInterpolator())
+                                        .setInterpolator(new BounceInterpolator())
+                                        .setDuration(1500);
+                            }
+                        });
+*/
+
+                new ParticleSystem(SnoozrMain.this, 50, R.drawable.sheep_falling_animation, 3000)
+                        .setSpeedModuleAndAngleRange(0.2f, 0.5f,220,250)
+                        .setScaleRange(0.15f, 0.2f)
+                        .setAcceleration(0.0005f, 90)
+                        .oneShot(view, 1);
+
             }
         });
     }
