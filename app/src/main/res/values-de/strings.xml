@@ -9,8 +9,8 @@
     <string name="hours">Hours</string>
     <string name="minutes">Minutes</string>
     <string name="sleep_now">Ich möchte jetzt Schlafen</string>
-    <string name="i_know_my_bedtime">ich möchte einschlafen um</string>
-    <string name="i_wanna_wake_up_at">ich möchte aufwachen um</string>
+    <string name="i_know_my_bedtime">Ich möchte einschlafen um</string>
+    <string name="i_wanna_wake_up_at">Ich möchte aufwachen um</string>
     <string name="power_nap">Power Nap</string>
     <string name="set_alarm_for">Alarm setzen für:</string>
     <string name="cancel">Abbrechen</string>

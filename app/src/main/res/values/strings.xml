@@ -8,10 +8,10 @@
     <string name="stop_pinknoise">Stop PinkNoise</string>
     <string name="hours">Hours</string>
     <string name="minutes">Minutes</string>
-    <string name="sleep_now">"Sleep Now "</string>
+    <string name="sleep_now">"sleep now "</string>
     <string name="i_know_my_bedtime">I wanna sleep at</string>
-    <string name="i_wanna_wake_up_at">I Wanna wake up at</string>
-    <string name="power_nap">Power Nap</string>
+    <string name="i_wanna_wake_up_at">I wanna wake up at</string>
+    <string name="power_nap">power nap</string>
     <string name="set_alarm_for">Set Alarm for:</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>

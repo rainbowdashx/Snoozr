@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 public class ContentItem {
@@ -22,6 +23,9 @@ public class ContentItem {
         int cycles = Math.abs((int) (millis / (90 * 1000)) / 60);
 
         Text = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(InCalender.getTime());
+
+        //Text = new SimpleDateFormat("HH:mm", Locale.ENGLISH).format(InCalender.getTime());
+
         Duration = ctx.getString(R.string.nap_for)+ " " + hours + ctx.getString(R.string.hours_h_short) +" : " + mins + ctx.getString(R.string.minutes_m_short);
         DateTime = InCalender;
         Cycles = String.valueOf(cycles) + " " +ctx.getString(R.string.cycles);
