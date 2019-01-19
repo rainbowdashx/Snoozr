@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Snoozr</string>
     <string name="action_settings">Settings</string>
-    <string name="you_should_try_to_fall_asleep">You should try to fall asleep at one of the following times:</string>
+    <string name="you_should_try_to_fall_asleep">Versuche einzuschlafen gegen</string>
     <string name="set_alarm">Set Alarm</string>
     <string name="start_nap">Start Nap</string>
     <string name="pinknoise">PinkNoise</string>
@@ -14,11 +14,11 @@
     <string name="power_nap">Power Nap</string>
     <string name="set_alarm_for">Alarm setzen für:</string>
     <string name="cancel">Abbrechen</string>
-    <string name="ok">OK</string>
-    <string name="set_alarm_at">Alarm setzen für:</string>
+    <string name="ok">Ok</string>
+
     <string name="cycles">Zyklen</string>
     <string name="minutes_m_short">m</string>
     <string name="nap_for">Nap for</string>
     <string name="hours_h_short">h</string>
-    <string name="sheep_description">Sheep</string>
+    <string name="sheep_description">Schaf</string>
 </resources>

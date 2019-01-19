@@ -88,6 +88,11 @@
         android:onClick="StopPinkNoise"
         android:text="@string/stop_pinknoise" />
 
+    <Spinner
+        android:id="@+id/powernap_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/txtHours"
         android:layout_width="wrap_content"
