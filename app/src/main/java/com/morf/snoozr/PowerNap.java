@@ -2,12 +2,14 @@ package com.morf.snoozr;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.media.MediaPlayer;
 import android.provider.AlarmClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -19,6 +21,7 @@ public class PowerNap extends AppCompatActivity {
 
 
     private MediaPlayer mMediaPlayer;
+    private int SelectedResourceID = R.raw.pinknoise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +29,26 @@ public class PowerNap extends AppCompatActivity {
         setContentView(R.layout.activity_power_nap);
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.powernap_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.powernap_array,android.R.layout.simple_spinner_item);
+        Spinner spinner = findViewById(R.id.powernap_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.powernap_array,R.layout.powernap_choice_item);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.snoozr_spinner_dropdown);
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                TypedArray mediaArray = getResources().obtainTypedArray(R.array.powernap_media);
+                SelectedResourceID = mediaArray.getResourceId(position, R.raw.pinknoise);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
     }
 
 
@@ -93,9 +111,10 @@ public class PowerNap extends AppCompatActivity {
     }
 
     public void PlayPinkNoise(View view) {
+
         StopMediaPlayer();
 
-        mMediaPlayer = MediaPlayer.create(this, R.raw.pinknoise);
+        mMediaPlayer = MediaPlayer.create(this,SelectedResourceID);
         mMediaPlayer.start();
     }
 
