@@ -3,10 +3,14 @@
 
     <string-array name="powernap_array">
         <item>Pinknoise</item>
+        <item>Fire</item>
+        <item>Wind</item>
     </string-array>
 
     <array name="powernap_media">
         <item>@raw/pinknoise</item>
+        <item>@raw/fire_long</item>
+        <item>@raw/wind_long</item>
     </array>
 
 </resources>

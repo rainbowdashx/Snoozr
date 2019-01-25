@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.shawnlin.numberpicker.NumberPicker;
@@ -30,7 +31,7 @@ public class PowerNap extends AppCompatActivity {
 
 
         Spinner spinner = findViewById(R.id.powernap_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.powernap_array,R.layout.powernap_choice_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.powernap_array, R.layout.powernap_choice_item);
 
         adapter.setDropDownViewResource(R.layout.snoozr_spinner_dropdown);
         spinner.setAdapter(adapter);
@@ -81,7 +82,7 @@ public class PowerNap extends AppCompatActivity {
         napTime.add(Calendar.MINUTE, Minutes);
         napTime.add(Calendar.HOUR, Hours);
 
-        final ContentItem item = new ContentItem(napTime, currentTime,getApplicationContext());
+        final ContentItem item = new ContentItem(napTime, currentTime, getApplicationContext());
 
         AlertDialog.Builder adb = new AlertDialog.Builder(this, R.style.SnoozrAlertDialogStyle);
         adb.setTitle(getString(R.string.set_alarm_for) + item.Text);
@@ -114,7 +115,7 @@ public class PowerNap extends AppCompatActivity {
 
         StopMediaPlayer();
 
-        mMediaPlayer = MediaPlayer.create(this,SelectedResourceID);
+        mMediaPlayer = MediaPlayer.create(this, SelectedResourceID);
         mMediaPlayer.start();
     }
 
@@ -122,6 +123,21 @@ public class PowerNap extends AppCompatActivity {
         StopMediaPlayer();
     }
 
+    public void TogglePinkNoise(View view) {
+
+        if (mMediaPlayer != null) {
+
+            StopPinkNoise(view);
+            ImageButton btn = (ImageButton) view;
+            //view.setBackgroundResource(android.R.drawable.ic_media_play);
+            btn.setImageResource(android.R.drawable.ic_media_play);
+
+        } else {
+            PlayPinkNoise(view);
+            ImageButton btn = (ImageButton) view;
+            btn.setImageResource(android.R.drawable.ic_media_pause);
+        }
+    }
 
     protected void StopMediaPlayer() {
 
@@ -136,4 +152,6 @@ public class PowerNap extends AppCompatActivity {
             mMediaPlayer = null;
         }
     }
+
+
 }
