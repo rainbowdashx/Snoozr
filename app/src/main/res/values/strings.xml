@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TEST_NAME_APP_STRING</string>
+    <string name="app_name">Snoozr</string>
     <string name="action_settings">Settings</string>
     <string name="you_should_try_to_fall_asleep">try to sleep at</string>
     <string name="set_alarm">Set Alarm</string>

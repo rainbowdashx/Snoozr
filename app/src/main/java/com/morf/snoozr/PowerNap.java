@@ -54,11 +54,11 @@ public class PowerNap extends AppCompatActivity {
             ToggleButton newButton = (ToggleButton) getLayoutInflater().inflate(R.layout.soundcue_togglebutton, null);
 
 
-
             mediaArray.getResourceId(i, R.raw.pinknoise);
 
             int IconId = iconsArray.getResourceId(i, R.drawable.dove);
-            newButton.setBackgroundDrawable(ContextCompat.getDrawable(this,IconId));
+            newButton.setBackgroundDrawable(ContextCompat.getDrawable(this, IconId));
+
 
             int finalIdx = i;
             newButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -67,10 +67,10 @@ public class PowerNap extends AppCompatActivity {
 
                     if (checked) {
                         AddSoundCue(finalIdx);
-                        btn.setBackgroundTintList(ContextCompat.getColorStateList(btn.getContext(),R.color.colorAccent));
+                        btn.setBackgroundTintList(ContextCompat.getColorStateList(btn.getContext(), R.color.colorAccent));
                     } else {
                         AddSoundCue(finalIdx);
-                        btn.setBackgroundTintList(ContextCompat.getColorStateList(btn.getContext(),R.color.colorBlackBackground));
+                        btn.setBackgroundTintList(ContextCompat.getColorStateList(btn.getContext(), R.color.colorBlackBackground));
                     }
 
                 }
@@ -218,6 +218,10 @@ public class PowerNap extends AppCompatActivity {
             }
 
             mediaArray.recycle();
+        }
+
+        if (MediaPlayerPool.size() > 0) {
+            PlaySoundCues();
         }
     }
 }
