@@ -5,12 +5,40 @@
         <item>Pinknoise</item>
         <item>Fire</item>
         <item>Wind</item>
+        <item>Birds</item>
+        <item>Crickets</item>
+        <item>People</item>
+        <item>Rain</item>
+        <item>Tibet</item>
+        <item>Thunder</item>
+        <item>Waves</item>
+
     </string-array>
 
     <array name="powernap_media">
-        <item>@raw/pinknoise</item>
+        <item>@raw/whitenoise_long</item>
         <item>@raw/fire_long</item>
         <item>@raw/wind_long</item>
+        <item>@raw/birds_long</item>
+        <item>@raw/crickets_long</item>
+        <item>@raw/peoplecoffe_long</item>
+        <item>@raw/rain_long</item>
+        <item>@raw/singbowl_long</item>
+        <item>@raw/thunder_long</item>
+        <item>@raw/waves_long</item>
+    </array>
+
+    <array name="powernap_icons">
+        <item>@drawable/television</item>
+        <item>@drawable/campfire</item>
+        <item>@drawable/wind</item>
+        <item>@drawable/dove</item>
+        <item>@drawable/grass</item>
+        <item>@drawable/coffe</item>
+        <item>@drawable/raindrops</item>
+        <item>@drawable/soup</item>
+        <item>@drawable/weather</item>
+        <item>@drawable/waves</item>
     </array>
 
 </resources>

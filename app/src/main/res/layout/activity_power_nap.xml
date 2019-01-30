@@ -9,6 +9,13 @@
     tools:context=".PowerNap">
 
 
+    <android.support.v7.widget.GridLayout
+
+        android:id="@+id/SoundCueGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:columnCount="4"/>
+
     <com.shawnlin.numberpicker.NumberPicker
         android:id="@+id/MinutePicker"
         android:layout_width="wrap_content"
@@ -69,20 +76,12 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/HourPicker"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="50dp"
         android:onClick="TogglePinkNoise"
-        android:tint="@color/colorBlackBackground"
         android:src="@android:drawable/ic_media_play"
-        />
+        android:tint="@color/colorBlackBackground" />
 
-
-    <Spinner
-        android:id="@+id/powernap_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         />
 
     <TextView
         android:id="@+id/txtHours"

@@ -3,53 +3,84 @@ package com.morf.snoozr;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.provider.AlarmClock;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.ToggleButton;
 
 import com.shawnlin.numberpicker.NumberPicker;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
+import java.util.zip.Inflater;
 
 public class PowerNap extends AppCompatActivity {
 
 
-    private MediaPlayer mMediaPlayer;
-    private int SelectedResourceID = R.raw.pinknoise;
+    private List<MediaPlayer> MediaPlayerPool = new ArrayList<>();
+
+
+    private List<Integer> SelectedResourceIDs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_power_nap);
+        android.support.v7.widget.GridLayout Grid = (android.support.v7.widget.GridLayout) findViewById(R.id.SoundCueGrid);
+
+        TypedArray mediaArray = getResources().obtainTypedArray(R.array.powernap_media);
+        TypedArray iconsArray = getResources().obtainTypedArray(R.array.powernap_icons);
+
+        for (int i = 0; i < mediaArray.length(); i++) {
 
 
-        Spinner spinner = findViewById(R.id.powernap_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.powernap_array, R.layout.powernap_choice_item);
+            ToggleButton newButton = (ToggleButton) getLayoutInflater().inflate(R.layout.soundcue_togglebutton, null);
 
-        adapter.setDropDownViewResource(R.layout.snoozr_spinner_dropdown);
-        spinner.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                TypedArray mediaArray = getResources().obtainTypedArray(R.array.powernap_media);
-                SelectedResourceID = mediaArray.getResourceId(position, R.raw.pinknoise);
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
+            mediaArray.getResourceId(i, R.raw.pinknoise);
 
-        });
+            int IconId = iconsArray.getResourceId(i, R.drawable.dove);
+            newButton.setBackgroundDrawable(ContextCompat.getDrawable(this,IconId));
 
+            int finalIdx = i;
+            newButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton btn, boolean checked) {
+
+                    if (checked) {
+                        AddSoundCue(finalIdx);
+                        btn.setBackgroundTintList(ContextCompat.getColorStateList(btn.getContext(),R.color.colorAccent));
+                    } else {
+                        AddSoundCue(finalIdx);
+                        btn.setBackgroundTintList(ContextCompat.getColorStateList(btn.getContext(),R.color.colorBlackBackground));
+                    }
+
+                }
+            });
+
+            Grid.addView(newButton);
+        }
+
+        mediaArray.recycle();
+        iconsArray.recycle();
     }
 
 
@@ -111,47 +142,82 @@ public class PowerNap extends AppCompatActivity {
         adb.show();
     }
 
-    public void PlayPinkNoise(View view) {
 
-        StopMediaPlayer();
-
-        mMediaPlayer = MediaPlayer.create(this, SelectedResourceID);
-        mMediaPlayer.start();
-    }
-
-    public void StopPinkNoise(View view) {
+    public void StopPinkNoise() {
         StopMediaPlayer();
     }
 
     public void TogglePinkNoise(View view) {
 
-        if (mMediaPlayer != null) {
+        if (MediaPlayerPool.size() > 0) {
 
-            StopPinkNoise(view);
+            StopPinkNoise();
             ImageButton btn = (ImageButton) view;
             //view.setBackgroundResource(android.R.drawable.ic_media_play);
             btn.setImageResource(android.R.drawable.ic_media_play);
 
         } else {
-            PlayPinkNoise(view);
+
+            PlaySoundCues();
             ImageButton btn = (ImageButton) view;
             btn.setImageResource(android.R.drawable.ic_media_pause);
+        }
+
+        if (MediaPlayerPool.size() == 0) {
+            ImageButton btn = (ImageButton) view;
+            btn.setImageResource(android.R.drawable.ic_media_play);
+        }
+    }
+
+    public void PlaySoundCue(int CueID) {
+
+        MediaPlayer LocalPlayer = MediaPlayer.create(this, CueID);
+        LocalPlayer.start();
+        MediaPlayerPool.add(LocalPlayer);
+    }
+
+    public void PlaySoundCues() {
+
+        StopMediaPlayer();
+
+        for (int Item : SelectedResourceIDs) {
+            PlaySoundCue(Item);
         }
     }
 
     protected void StopMediaPlayer() {
 
-        if (mMediaPlayer != null) {
 
-            if (mMediaPlayer.isPlaying()) {
-                mMediaPlayer.stop();
+        for (MediaPlayer Item : MediaPlayerPool) {
+            if (Item != null) {
+
+                if (Item.isPlaying()) {
+                    Item.stop();
+                }
+
+                Item.reset();
+                Item.release();
             }
-
-            mMediaPlayer.reset();
-            mMediaPlayer.release();
-            mMediaPlayer = null;
         }
+
+        MediaPlayerPool.clear();
     }
 
 
+    public void AddSoundCue(int idxCue) {
+
+        if (idxCue >= 0) {
+            TypedArray mediaArray = getResources().obtainTypedArray(R.array.powernap_media);
+            int LocalResourceID = mediaArray.getResourceId(idxCue, R.raw.pinknoise);
+            if (SelectedResourceIDs.contains(LocalResourceID)) {
+
+                SelectedResourceIDs.remove(Integer.valueOf(LocalResourceID));
+
+            } else {
+                SelectedResourceIDs.add(LocalResourceID);
+            }
+
+            mediaArray.recycle();
+        }
+    }
 }
