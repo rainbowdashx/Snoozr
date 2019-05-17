@@ -9,15 +9,10 @@
     tools:context=".PowerNap">
 
 
-    <android.support.v7.widget.GridLayout
-
-        android:id="@+id/SoundCueGrid"
+    <TableLayout
+        android:id="@+id/SoundCueTable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        app:columnCount="5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent" />
 
     <com.shawnlin.numberpicker.NumberPicker
         android:id="@+id/MinutePicker"
@@ -81,8 +76,8 @@
     <ImageButton
         android:id="@+id/btnPinkNoise"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="138dp"
+        android:layout_height="64dp"
         android:layout_marginLeft="18dp"
         android:onClick="TogglePinkNoise"
         android:src="@android:drawable/ic_media_play"

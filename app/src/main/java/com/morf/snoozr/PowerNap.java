@@ -13,7 +13,9 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
@@ -21,6 +23,8 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.ToggleButton;
 
 import com.shawnlin.numberpicker.NumberPicker;
@@ -42,11 +46,18 @@ public class PowerNap extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_power_nap);
-        android.support.v7.widget.GridLayout Grid = (android.support.v7.widget.GridLayout) findViewById(R.id.SoundCueGrid);
+
+        TableLayout CueTable = (TableLayout) findViewById(R.id.SoundCueTable);
 
         TypedArray mediaArray = getResources().obtainTypedArray(R.array.powernap_media);
         TypedArray iconsArray = getResources().obtainTypedArray(R.array.powernap_icons);
+
+        TableRow LastUsedRow = new TableRow(getApplicationContext());
+        LastUsedRow.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+        CueTable.addView(LastUsedRow);
 
         for (int i = 0; i < mediaArray.length(); i++) {
 
@@ -75,8 +86,14 @@ public class PowerNap extends AppCompatActivity {
 
                 }
             });
+            //new row ignore i==0
+            if (i % 4 == 0 && i > 0) {
+                LastUsedRow = new TableRow(getApplicationContext());
+                LastUsedRow.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+                CueTable.addView(LastUsedRow);
 
-            Grid.addView(newButton);
+            }
+            LastUsedRow.addView(newButton);
         }
 
         mediaArray.recycle();
@@ -173,6 +190,7 @@ public class PowerNap extends AppCompatActivity {
 
         MediaPlayer LocalPlayer = MediaPlayer.create(this, CueID);
         LocalPlayer.start();
+        LocalPlayer.setLooping(true);
         MediaPlayerPool.add(LocalPlayer);
     }
 
@@ -224,4 +242,6 @@ public class PowerNap extends AppCompatActivity {
             PlaySoundCues();
         }
     }
+
+
 }
